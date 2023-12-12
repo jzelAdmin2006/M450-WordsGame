@@ -7,8 +7,9 @@ public class Program
         if (args.Length < 1)
         {
             Console.WriteLine("usage: {0} WORDSFILE", AppDomain.CurrentDomain.FriendlyName);
+            return;
         }
-        var words = Utils.SlurpLines(args[1]);
+        var words = Utils.SlurpLines(args[0]);
         var word = Utils.PickRandom(words).ToUpper();
         var game = new WordsGame();
         var scrambled = game.Start(word);
@@ -20,10 +21,11 @@ public class Program
         var solution = Console.ReadLine();
         if (solution != null)
         {
-            var points = game.Grade(solution);
+            var points = game.Grade(solution.ToUpper());
             if (points == 0)
             {
-                Console.WriteLine("Wrong!");
+                // TODO: transcribe answer from https://youtu.be/yptXkLglKkA
+                Console.WriteLine("wrong");
             }
             else
             {
