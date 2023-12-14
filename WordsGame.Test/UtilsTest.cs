@@ -15,7 +15,7 @@ public class UtilsTest
     [Fact]
     public void TestScrambleSingleLetterIsSame()
     {
-        String original = new Random().Next('a', 'z').ToString();
+        String original = ((char)new Random().Next('a', 'z')).ToString();
 
         String scrambled = Utils.Scramble(original);
 
