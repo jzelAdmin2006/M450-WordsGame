@@ -4,8 +4,7 @@ public class Utils
 {
     public static string Scramble(string original)
     {
-        // TODO: implement scrambling
-        return original;
+        return new string(original.Reverse().ToArray());
     }
 
     public static List<string> SlurpLines(string filePath)
