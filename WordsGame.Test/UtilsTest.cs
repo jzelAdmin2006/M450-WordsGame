@@ -31,4 +31,19 @@ public class UtilsTest
 
         Assert.Equal("ba", scrambled);
     }
+
+    [Fact]
+    public void TestScrambleThreeLettersOrderIsDifferent()
+    {
+        String original = "abc";
+
+        String scrambled = Utils.Scramble(original);
+
+        Assert.NotEqual(original, scrambled);
+        Assert.True(
+            original.All(scrambled.Contains) && scrambled.All(original.Contains), 
+            $"Scrambled string \"{scrambled}\" should exactly contain characters from original string \"{original}\""
+        );
+        Assert.Equal(3, scrambled.Length);
+    }
 }
