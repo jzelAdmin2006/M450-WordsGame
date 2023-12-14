@@ -21,4 +21,14 @@ public class UtilsTest
 
         Assert.Equal(original, scrambled);
     }
+
+    [Fact]
+    public void TestScrambleTwoLettersIsOtherWayRound()
+    {
+        String original = "ab";
+
+        String scrambled = Utils.Scramble(original);
+
+        Assert.Equal("ba", scrambled);
+    }
 }
