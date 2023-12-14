@@ -40,10 +40,32 @@ public class UtilsTest
         String scrambled = Utils.Scramble(original);
 
         Assert.NotEqual(original, scrambled);
-        Assert.True(
-            original.All(scrambled.Contains) && scrambled.All(original.Contains), 
-            $"Scrambled string \"{scrambled}\" should exactly contain characters from original string \"{original}\""
-        );
+        assertContainsExactlySameChars(original, scrambled);
         Assert.Equal(3, scrambled.Length);
+    }
+
+    [Fact]
+    public void TestScrambleLargeStringTwiceResultsAreDifferent()
+    {
+        String original = "xTVPohZjHvw4ax7vAYK4FVAN1D6d23jgVWSfUrvlQcQkXoL4xcEgp5TE0llkqST9Tf8LXiNZ2x25yQax8fGQ18IxvhsmMLixRrBr";
+
+        String firstResult = Utils.Scramble(original);
+        String secondResult = Utils.Scramble(original);
+
+        Assert.NotEqual(original, firstResult);
+        Assert.NotEqual(original, secondResult);
+        Assert.NotEqual(firstResult, secondResult);
+        assertContainsExactlySameChars(original, firstResult);
+        assertContainsExactlySameChars(original, secondResult);
+        Assert.Equal(100, firstResult.Length);
+        Assert.Equal(100, secondResult.Length);
+    }
+
+    private static void assertContainsExactlySameChars(string original, string scrambled)
+    {
+        Assert.True(
+                    original.All(scrambled.Contains) && scrambled.All(original.Contains),
+                    $"Scrambled string \"{scrambled}\" should exactly contain characters from original string \"{original}\""
+                );
     }
 }
