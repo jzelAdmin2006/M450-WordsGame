@@ -11,4 +11,14 @@ public class UtilsTest
 
         Assert.Equal("", scrambled);
     }
+
+    [Fact]
+    public void TestScrambleSingleLetterIsSame()
+    {
+        String original = new Random().Next('a', 'z').ToString();
+
+        String scrambled = Utils.Scramble(original);
+
+        Assert.Equal(original, scrambled);
+    }
 }
