@@ -1,13 +1,13 @@
 namespace WordsGame.Test;
 
-public class UtilsTest
+public class ScramblerTest
 {
     [Fact]
     public void TestScrambleEmptyIsEmpty()
     {
         String original = "";
 
-        String scrambled = Utils.Scramble(original);
+        String scrambled = new Scrambler().Scramble(original);
 
         Assert.Equal("", scrambled);
     }
@@ -17,7 +17,7 @@ public class UtilsTest
     {
         String original = ((char)new Random().Next('a', 'z')).ToString();
 
-        String scrambled = Utils.Scramble(original);
+        String scrambled = new Scrambler().Scramble(original);
 
         Assert.Equal(original, scrambled);
     }
@@ -27,7 +27,7 @@ public class UtilsTest
     {
         String original = "ab";
 
-        String scrambled = Utils.Scramble(original);
+        String scrambled = new Scrambler().Scramble(original);
 
         Assert.Equal("ba", scrambled);
     }
@@ -37,7 +37,7 @@ public class UtilsTest
     {
         String original = "abc";
 
-        String scrambled = Utils.Scramble(original);
+        String scrambled = new Scrambler().Scramble(original);
 
         Assert.NotEqual(original, scrambled);
         assertContainsExactlySameChars(original, scrambled);
@@ -49,8 +49,8 @@ public class UtilsTest
     {
         String original = "xTVPohZjHvw4ax7vAYK4FVAN1D6d23jgVWSfUrvlQcQkXoL4xcEgp5TE0llkqST9Tf8LXiNZ2x25yQax8fGQ18IxvhsmMLixRrBr";
 
-        String firstResult = Utils.Scramble(original);
-        String secondResult = Utils.Scramble(original);
+        String firstResult = new Scrambler().Scramble(original);
+        String secondResult = new Scrambler().Scramble(original);
 
         Assert.NotEqual(original, firstResult);
         Assert.NotEqual(original, secondResult);

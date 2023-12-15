@@ -2,6 +2,8 @@
 
 public class WordsGame : IWordsGame
 {
+    public WordsGame(IScrambler scrambler) { }
+
     public string Start(string word)
     {
         // TODO: store the original word for later comparison

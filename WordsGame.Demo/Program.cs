@@ -11,7 +11,7 @@ public class Program
         }
         var words = Utils.SlurpLines(args[0]);
         var word = Utils.PickRandom(words).ToUpper();
-        var game = new WordsGame();
+        var game = new WordsGame(new Scrambler());
         var scrambled = game.Start(word);
 
         Console.WriteLine("This word has been scrambled:");
