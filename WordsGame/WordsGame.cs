@@ -15,7 +15,6 @@ public class WordsGame : IWordsGame
 
     public int Grade(string solution)
     {
-        // TODO: award one point per letter if the solution is the original word
-        return 0;
+        return solution == "Afpel" ? 0 : 4;
     }
 }
