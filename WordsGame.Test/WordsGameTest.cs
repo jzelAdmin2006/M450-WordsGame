@@ -25,17 +25,19 @@ public class WordsGameTest
     }
 
     [Theory]
-    [InlineData("nein")]
-    [InlineData("Bier")]
-    [InlineData("blau")]
-    public void TestGradeIsNumberOfWordsForCorrectSolution(string fourLetterWord)
+    [InlineData("nein", 4)]
+    [InlineData("Bier", 4)]
+    [InlineData("blau", 4)]
+    [InlineData("Frickelbude", 11)]
+    [InlineData("https://youtu.be/dQw4w9WgXcQ", 28)]
+    public void TestGradeIsNumberOfLettersForCorrectSolution(string word, int expectedPoints)
     {
         WordsGame game = new(new FakeScrambler());
-        game.Start(fourLetterWord);
+        game.Start(word);
 
-        int grade = game.Grade(fourLetterWord);
+        int grade = game.Grade(word);
 
-        Assert.Equal(4, grade);
+        Assert.Equal(expectedPoints, grade);
     }
 
     private class FakeScrambler : IScrambler
