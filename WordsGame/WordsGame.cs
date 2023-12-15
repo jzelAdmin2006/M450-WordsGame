@@ -2,13 +2,15 @@
 
 public class WordsGame : IWordsGame
 {
-    public WordsGame(IScrambler scrambler) { }
+    private readonly IScrambler scrambler;
+
+    public WordsGame(IScrambler scrambler) {
+        this.scrambler = scrambler;
+    }
 
     public string Start(string word)
     {
-        // TODO: store the original word for later comparison
-        // TODO: return a scrambled version of the word
-        return "";
+        return scrambler.Scramble(word);
     }
 
     public int Grade(string solution)
