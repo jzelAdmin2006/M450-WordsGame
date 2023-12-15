@@ -24,6 +24,20 @@ public class WordsGameTest
         Assert.Equal(0, grade);
     }
 
+    [Theory]
+    [InlineData("nein")]
+    [InlineData("Bier")]
+    [InlineData("blau")]
+    public void TestGradeIsNumberOfWordsForCorrectSolution(string fourLetterWord)
+    {
+        WordsGame game = new(new FakeScrambler());
+        game.Start(fourLetterWord);
+
+        int grade = game.Grade(fourLetterWord);
+
+        Assert.Equal(4, grade);
+    }
+
     private class FakeScrambler : IScrambler
     {
         public string Scramble(string word)
