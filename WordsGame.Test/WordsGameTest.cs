@@ -12,6 +12,18 @@ public class WordsGameTest
         Assert.Equal("lkjihgfedcba", scrambled);
     }
 
+    [Fact]
+    public void TestGradeIsZeroForWrongSolution()
+    {
+        String original = "Apfel";
+        WordsGame game = new(new FakeScrambler());
+        game.Start(original);
+
+        int grade = game.Grade("Afpel");
+
+        Assert.Equal(0, grade);
+    }
+
     private class FakeScrambler : IScrambler
     {
         public string Scramble(string word)
