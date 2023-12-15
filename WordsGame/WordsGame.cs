@@ -17,6 +17,11 @@ public class WordsGame : IWordsGame
 
     public int Grade(string solution)
     {
-        return solution == originalWord ? solution.Length : 0;
+        return solution == originalWord ? CorrectScore(solution) : 0;
+    }
+
+    protected virtual int CorrectScore(string solution)
+    {
+        return solution.Length;
     }
 }
