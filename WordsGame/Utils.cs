@@ -33,4 +33,10 @@ public class Utils
         var i = new Random().NextInt64() % entries.Count;
         return entries[(int)i];
     }
+
+    public static int CalculateTimeWeightedScore(int score, double timeTaken, double maxTime)
+    {
+        double weightedScore = score * (maxTime - timeTaken) / maxTime;
+        return (int)Math.Round(weightedScore);
+    }
 }
